@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./index.css";
 import avatar from "./avatar.jpeg";
+import _ from 'lodash';
 
 // 1.渲染评论列表
 //  -使用useState维护评论列表
@@ -13,6 +14,8 @@ import avatar from "./avatar.jpeg";
 //  -点击tab，就出现高亮
 //  思路：点击tab，记录下type，与遍历到的item做对比，谁匹配搭配就设置成高亮
 // 4.评论列表排序功能实现
+//  -时间排序，点赞数排序
+//  思路排序后，当成新值传给set
 const list = [
   {
     rpid: 3,
@@ -24,7 +27,7 @@ const list = [
     },
     content: "i like this video",
     time: "10-18 08:15",
-    like: 88,
+    like: 25,
   },
   {
     rpid: 2,
@@ -36,7 +39,7 @@ const list = [
     },
     content: "i like the food",
     time: "10-18 12:15",
-    like: 88,
+    like: 33,
   },
   {
     rpid: 1,
@@ -48,7 +51,7 @@ const list = [
     },
     content: "i like this song",
     time: "10-19 18:15",
-    like: 88,
+    like: 5,
   },
 ];
 let count = 0;
@@ -67,7 +70,7 @@ const tabs = [
 function App() {
   // 1.渲染评论列表
   //  -使用useState维护评论列表
-  const [commentList, setCommentList] = useState(list);
+  const [commentList, setCommentList] = useState(_.orderBy(list, 'like','desc'));
 
   const handleDel = (id) =>{
     // 对commentList做过滤处理
@@ -82,6 +85,14 @@ function App() {
   const handleTabChange = (type) =>{
     console.log(type)
     setType(type)
+    //排序
+    if(type === 'popular') {
+      //lodash orderBy()
+      setCommentList(_.orderBy(commentList, 'like', 'desc'))
+
+    }else{
+      setCommentList(_.orderBy(commentList, 'time', 'desc'))
+    }
   }
 
   return (
