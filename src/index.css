@@ -1,3 +1,63 @@
+*{
+    color: rgb(163, 159, 159)
+}
+
 .foo{
     color:red;
 }
+img{
+   width: 40px;
+   height: 40px ;
+   border-radius: 5px;
+ 
+}
+textarea{
+    resize: none;
+    height:35px ;
+    margin-left: 10px;
+    border:none;
+    background-color: rgb(205, 202, 202);
+    border-radius: 10px;
+}
+button{
+    height: 35px;
+    width: 45px;
+    color: white;
+    font-size: 15px;
+    background-color: rgb(21, 174, 225);
+    border-radius: 5px;
+    border:none;
+    
+    align-items: center;
+    margin-left: 10px;
+   
+    
+}
+.comment-reply{
+    margin: 5px;
+   
+}
+
+.comment-context{
+    color: black;
+    margin: 5px;
+
+}
+
+.comment-bottom span{
+    padding-right: 10px;
+
+}
+
+.active{
+    color: black;
+}
+.nav-item{
+    margin-left: 10px;
+    display: inline-block;
+}
+.nav-item:hover{
+    color: rgb(21, 174, 225);
+   
+}
+
